@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using PokemonTracker.API.Model;
 using PokemonTracker.API.Service;
 
+[Route("api/[controller]")]
+[ApiController]
 public class PokemonController : ControllerBase
 {
     private readonly IPokemonService _pokemonService;
@@ -12,4 +14,6 @@ public class PokemonController : ControllerBase
     {
         _pokemonService = pokemonService;
     }
+
+
 }
