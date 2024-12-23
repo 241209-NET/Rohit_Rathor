@@ -1,8 +1,6 @@
 
 # Pokemon Tracker
-This is a Full Stack .NET app to help keep track of trainers and their pokemon teams that will be persisted to a backend. Made by Rohit Rathor
-
-## Project Requirements
+This is a Full Stack .NET app to help keep track of trainers and their pokemon teams that will be persisted to a backend. Made by Rohit Rathor.
 
 ## Tech Stack
 
@@ -12,7 +10,7 @@ This is a Full Stack .NET app to help keep track of trainers and their pokemon t
 - ASP.NET (Web API Framework)
 
 ## ERD
-![ERD]()
+![ERD](image.png)
 
 ## MVP Goals
 

@@ -7,4 +7,6 @@ public class Pokemon
     public string Name { get; set; } = "";
     public string Type { get; set;} = "";
     public string PokedexDesc { get; set; } = "";
+    public int TrainerID { get; set; }
+
 }
