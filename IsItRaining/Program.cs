@@ -26,6 +26,7 @@ class Program
         catch (Exception e)
         {
             Console.WriteLine("Invalid Choice!");
+            MainMenu();
         }
 
         switch (choice)
@@ -41,6 +42,8 @@ class Program
                 Environment.Exit(0);
                 break;
             default:
+                Console.WriteLine("Invalid Choice!");
+                MainMenu();
                 break;
         }
         
