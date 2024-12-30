@@ -10,9 +10,9 @@ public class PokemonService : IPokemonService
 
     public PokemonService(IPokemonRepository pokemonRepository) => _pokemonRepository = pokemonRepository;
 
-    public Pokemon CreateNewPokemon(Pokemon newPokemon)
+    public Pokemon CreateNewPokemon(Pokemon newPkmn)
     {
-        throw new NotImplementedException();
+        return _pokemonRepository.CreateNewPkmn(newPkmn);
     }
 
     public Pokemon? DeletePokemonById(int id)

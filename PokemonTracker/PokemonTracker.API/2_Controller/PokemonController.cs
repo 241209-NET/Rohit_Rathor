@@ -15,5 +15,11 @@ public class PokemonController : ControllerBase
         _pokemonService = pokemonService;
     }
 
+    [HttpGet]
+    public IActionResult CreateNewPkmn(Pokemon newPkmn)
+    {
+        var pkmn = _pokemonService.CreateNewPokemon(newPkmn);
+        return Ok(pkmn);
+    }
 
 }
