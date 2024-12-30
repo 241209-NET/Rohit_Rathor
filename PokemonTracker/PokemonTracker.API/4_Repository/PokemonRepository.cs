@@ -12,7 +12,7 @@ public class PokemonRepository : IPokemonRepository
         _pokemonContext = pokemonContext;
     }
 
-    public Pokemon CreateNewPkmn(Pokemon newPkmn)
+    public Pkmn CreateNewPkmn(Pkmn newPkmn)
     {
         _pokemonContext.Pokemon.Add(newPkmn);
         _pokemonContext.SaveChanges();

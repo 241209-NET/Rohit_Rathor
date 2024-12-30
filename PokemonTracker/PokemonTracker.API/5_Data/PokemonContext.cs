@@ -8,6 +8,6 @@ public partial class PokemonContext : DbContext
     public PokemonContext(){}
     public PokemonContext(DbContextOptions<PokemonContext> options) : base(options){}
 
-    public virtual DbSet<Pokemon> Pokemon { get; set; }
+    public virtual DbSet<Pkmn> Pokemon { get; set; }
     public virtual DbSet<Trainer> Trainers { get; set; }
 }

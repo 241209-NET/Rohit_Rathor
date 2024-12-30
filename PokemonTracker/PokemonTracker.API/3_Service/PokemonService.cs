@@ -3,6 +3,7 @@ namespace PokemonTracker.API.Service;
 using System.Collections.Generic;
 using PokemonTracker.API.Model;
 using PokemonTracker.API.Repository;
+using PokemonTracker.API.Util;
 
 public class PokemonService : IPokemonService
 {
@@ -10,27 +11,29 @@ public class PokemonService : IPokemonService
 
     public PokemonService(IPokemonRepository pokemonRepository) => _pokemonRepository = pokemonRepository;
 
-    public Pokemon CreateNewPokemon(Pokemon newPkmn)
+    public Pkmn CreateNewPokemon(Pkmn newPkmn)
     {
-        return _pokemonRepository.CreateNewPkmn(newPkmn);
+        Pkmn pkmn = Utilities.ConvertPokemonToPkmn(newPkmn);
+
+        return _pokemonRepository.CreateNewPkmn(pkmn);
     }
 
-    public Pokemon? DeletePokemonById(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public IEnumerable<Pokemon> GetAllPokemon()
+    public Pkmn? DeletePokemonById(int id)
     {
         throw new NotImplementedException();
     }
 
-    public Pokemon? GetPokemonById(int id)
+    public IEnumerable<Pkmn> GetAllPokemon()
     {
         throw new NotImplementedException();
     }
 
-    public IEnumerable<Pokemon> GetPokemonBySpecies(string name)
+    public Pkmn? GetPokemonById(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public IEnumerable<Pkmn> GetPokemonBySpecies(string name)
     {
         throw new NotImplementedException();
     }

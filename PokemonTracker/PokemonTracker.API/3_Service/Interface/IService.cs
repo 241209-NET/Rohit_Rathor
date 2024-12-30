@@ -4,9 +4,9 @@ namespace PokemonTracker.API.Service;
 
 public interface IPokemonService
 {
-    Pokemon CreateNewPokemon(Pokemon newPokemon);
-    Pokemon? GetPokemonById(int id);
-    IEnumerable<Pokemon> GetPokemonBySpecies(string name);
-    IEnumerable<Pokemon> GetAllPokemon();
-    Pokemon? DeletePokemonById(int id);
+    Pkmn CreateNewPokemon(Pkmn newPokemon);
+    Pkmn? GetPokemonById(int id);
+    IEnumerable<Pkmn> GetPokemonBySpecies(string name);
+    IEnumerable<Pkmn> GetAllPokemon();
+    Pkmn? DeletePokemonById(int id);
 }

@@ -4,5 +4,5 @@ namespace PokemonTracker.API.Repository;
 
 public interface IPokemonRepository
 {
-    Pokemon CreateNewPkmn(Pokemon pkmn);
+    Pkmn CreateNewPkmn(Pkmn pkmn);
 }

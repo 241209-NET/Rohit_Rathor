@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using PokeApiNet;
 using PokemonTracker.API.Data;
+using PokemonTracker.API.Model;
 using PokemonTracker.API.Repository;
 using PokemonTracker.API.Service;
 
@@ -22,7 +24,6 @@ builder.Services.AddScoped<IPokemonRepository, PokemonRepository>();
 
 // Add Controllers
 builder.Services.AddControllers();
-
 
 var app = builder.Build();
 
