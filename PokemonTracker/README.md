@@ -21,6 +21,5 @@ This is a back end .NET API to help keep track of trainers and their pokemon tea
 - User can find a Pokemon by it's Nickname.
 - User can find all Pokemon filtered by Type.
 - User can view a specific Trainer's team of Pokemon.
-- User can view a Pokemon's pokedex description.
 - User can add or remove Pokemon from a Trainer's team.
 - User can remove a Trainer that exists.

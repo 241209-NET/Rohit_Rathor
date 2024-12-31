@@ -1,7 +1,9 @@
 using System.Text.Json.Serialization;
+using Microsoft.EntityFrameworkCore;
 
 namespace PokemonTracker.API.Model;
 
+[Index(nameof(Name), IsUnique = true)]
 public class Pkmn
 {
     [JsonIgnore]
@@ -9,10 +11,6 @@ public class Pkmn
     public string Species { get; set; } = "";
     public string Name { get; set; } = "";
 
-    [JsonIgnore]
     public string Type { get; set;} = "";
-    
-    [JsonIgnore]
-    public string PokedexDesc { get; set; } = "";
     public int TrainerID { get; set; }
 }

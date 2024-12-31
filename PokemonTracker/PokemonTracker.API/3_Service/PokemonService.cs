@@ -1,40 +1,73 @@
 namespace PokemonTracker.API.Service;
 
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using PokeApiNet;
 using PokemonTracker.API.Model;
 using PokemonTracker.API.Repository;
-using PokemonTracker.API.Util;
 
 public class PokemonService : IPokemonService
 {
     private readonly IPokemonRepository _pokemonRepository;
 
+    private static readonly HttpClient pokeApi = new()
+    {
+        BaseAddress = new Uri("https://pokeapi.co/api/v2/")
+    };
+
+
     public PokemonService(IPokemonRepository pokemonRepository) => _pokemonRepository = pokemonRepository;
 
-    public Pkmn CreateNewPokemon(Pkmn newPkmn)
+    public Pkmn? CreateNewPkmn(Pkmn newPkmn)
     {
-        Pkmn pkmn = Utilities.ConvertPokemonToPkmn(newPkmn);
+        var actualPkmn = pokeApi.GetAsync($"pokemon/{newPkmn.Species.ToLower()}").Result;
+        Pokemon pokemonJSON = JsonConvert.DeserializeObject<Pokemon>(actualPkmn.Content.ReadAsStringAsync().Result);
 
-        return _pokemonRepository.CreateNewPkmn(pkmn);
+        if (actualPkmn is null || GetPkmnByName(newPkmn.Name).FirstOrDefault() is not null)
+        {
+            return null;
+        }
+
+        newPkmn.Species = pokemonJSON!.Species.Name;
+
+        newPkmn.Type = "";
+
+        foreach (PokemonType t in pokemonJSON.Types)
+        {
+            newPkmn.Type += t.Type.Name + "/";
+        }
+        
+        return _pokemonRepository.CreateNewPkmn(newPkmn);
     }
 
-    public Pkmn? DeletePokemonById(int id)
+    public Pkmn? DeletePkmnByName(string name)
     {
-        throw new NotImplementedException();
+        var pkmn = GetPkmnByName(name).FirstOrDefault();
+        if (pkmn is not null)
+        {
+            _pokemonRepository.DeletePkmnByName(name);
+        }
+        return pkmn;
     }
 
-    public IEnumerable<Pkmn> GetAllPokemon()
+    public IEnumerable<Pkmn> GetAllPkmn()
     {
-        throw new NotImplementedException();
+        return _pokemonRepository.GetAllPkmn();
     }
 
-    public Pkmn? GetPokemonById(int id)
+    public IEnumerable<Pkmn> GetAllPkmnBySpecies(string species)
     {
-        throw new NotImplementedException();
+        return _pokemonRepository.GetAllPkmnBySpecies(species);
     }
 
-    public IEnumerable<Pkmn> GetPokemonBySpecies(string name)
+    public IEnumerable<Pkmn> GetAllPkmnByType(string type)
     {
-        throw new NotImplementedException();
+        type = type.ToLower();
+        return _pokemonRepository.GetAllPkmnByType(type);
+    }
+
+    public IEnumerable<Pkmn> GetPkmnByName(string name)
+    {
+        return _pokemonRepository.GetPkmnByName(name);
     }
 }
