@@ -1,7 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using PokeApiNet;
 using PokemonTracker.API.Data;
-using PokemonTracker.API.Model;
 using PokemonTracker.API.Repository;
 using PokemonTracker.API.Service;
 
@@ -18,9 +16,11 @@ builder.Services.AddSwaggerGen();
 
 // Dependency Inject Services
 builder.Services.AddScoped<IPokemonService, PokemonService>();
+builder.Services.AddScoped<ITrainerService, TrainerService>();
 
 // Dependency Inject Repositories
 builder.Services.AddScoped<IPokemonRepository, PokemonRepository>();
+builder.Services.AddScoped<ITrainerRepository, TrainerRepository>();
 
 // Add Controllers
 builder.Services.AddControllers();

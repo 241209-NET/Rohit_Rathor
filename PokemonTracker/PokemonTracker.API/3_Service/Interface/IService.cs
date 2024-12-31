@@ -11,3 +11,12 @@ public interface IPokemonService
     IEnumerable<Pkmn> GetPkmnByName(string name);
     Pkmn? DeletePkmnByName(string name);
 }
+
+public interface ITrainerService
+{
+    Trainer? CreateNewTrainer(Trainer trainer);
+    IEnumerable<Trainer> GetAllTrainers();
+    Trainer? GetTrainerByName(string name);
+    IEnumerable<Trainer> GetTeam(string name);
+    Trainer? DeleteTrainerByName(string name);
+}

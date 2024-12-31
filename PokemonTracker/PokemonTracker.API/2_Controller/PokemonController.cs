@@ -28,8 +28,8 @@ public class PokemonController : ControllerBase
         return Ok(pkmn);
     }
 
-    [HttpDelete("/delete/{name}")]
-    public IActionResult DeletePkmnById(string name)
+    [HttpDelete("delete/{name}")]
+    public IActionResult DeletePkmnByName(string name)
     {
         var deletePkmn = _pokemonService.DeletePkmnByName(name);
 
@@ -48,7 +48,7 @@ public class PokemonController : ControllerBase
         return Ok(pkmnList);
     }
 
-    [HttpGet("/name/{name}")]
+    [HttpGet("name/{name}")]
     public IActionResult GetPkmnByName(string name)
     {
         var findPkmn = _pokemonService.GetPkmnByName(name);
@@ -61,7 +61,7 @@ public class PokemonController : ControllerBase
         return Ok(findPkmn);
     }
 
-    [HttpGet("/species/{species}")]
+    [HttpGet("species/{species}")]
     public IActionResult GetPkmnBySpecies(string species)
     {
         var findPkmn = _pokemonService.GetAllPkmnBySpecies(species);
@@ -74,7 +74,7 @@ public class PokemonController : ControllerBase
         return Ok(findPkmn);
     }
 
-    [HttpGet("/type/{type}")]
+    [HttpGet("type/{type}")]
     public IActionResult GetPkmnByType(string type)
     {
         var findPkmn = _pokemonService.GetAllPkmnByType(type);

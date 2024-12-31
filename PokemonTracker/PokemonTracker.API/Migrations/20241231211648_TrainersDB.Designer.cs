@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PokemonTracker.API.Data;
 
@@ -10,9 +11,11 @@ using PokemonTracker.API.Data;
 namespace PokemonTracker.API.Migrations
 {
     [DbContext(typeof(PokemonContext))]
-    partial class PokemonContextModelSnapshot : ModelSnapshot
+    [Migration("20241231211648_TrainersDB")]
+    partial class TrainersDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,6 +68,9 @@ namespace PokemonTracker.API.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("NumTeamMembers")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

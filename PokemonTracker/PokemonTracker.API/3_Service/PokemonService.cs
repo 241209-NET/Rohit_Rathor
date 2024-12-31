@@ -21,7 +21,7 @@ public class PokemonService : IPokemonService
     public Pkmn? CreateNewPkmn(Pkmn newPkmn)
     {
         var actualPkmn = pokeApi.GetAsync($"pokemon/{newPkmn.Species.ToLower()}").Result;
-        Pokemon pokemonJSON = JsonConvert.DeserializeObject<Pokemon>(actualPkmn.Content.ReadAsStringAsync().Result);
+        Pokemon pokemonJSON = JsonConvert.DeserializeObject<Pokemon>(actualPkmn.Content.ReadAsStringAsync().Result)!;
 
         if (actualPkmn is null || GetPkmnByName(newPkmn.Name).FirstOrDefault() is not null)
         {
