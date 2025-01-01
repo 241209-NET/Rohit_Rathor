@@ -8,7 +8,7 @@ public interface IPokemonService
     IEnumerable<Pkmn> GetAllPkmn();
     IEnumerable<Pkmn> GetAllPkmnByType(string type);
     IEnumerable<Pkmn> GetAllPkmnBySpecies(string species);
-    IEnumerable<Pkmn> GetPkmnByName(string name);
+    Pkmn GetPkmnByName(string name);
     Pkmn? DeletePkmnByName(string name);
 }
 
@@ -18,5 +18,5 @@ public interface ITrainerService
     IEnumerable<Trainer> GetAllTrainers();
     Trainer? GetTrainerByName(string name);
     IEnumerable<Trainer> GetTeam(string name);
-    Trainer? DeleteTrainerByName(string name);
+    Trainer? DeleteTrainerByName(Trainer name);
 }

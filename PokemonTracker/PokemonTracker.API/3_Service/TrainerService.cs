@@ -15,9 +15,9 @@ public class TrainerService : ITrainerService
         return _trainerRepository.CreateNewTrainer(trainer);
     }
 
-    public Trainer? DeleteTrainerByName(string name)
+    public Trainer? DeleteTrainerByName(Trainer name)
     {
-        var trainer = GetTrainerByName(name);
+        var trainer = GetTrainerByName(name.Name);
 
         if (trainer is null)
         {

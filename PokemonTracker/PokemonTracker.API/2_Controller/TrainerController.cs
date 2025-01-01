@@ -54,7 +54,7 @@ public class TrainerController : ControllerBase
     }
 
     [HttpDelete("delete/{name}")]
-    public IActionResult DeleteTrainerByName(string name)
+    public IActionResult DeleteTrainerByName(Trainer name)
     {
         var deleteTrainer = _trainerService.DeleteTrainerByName(name);
 

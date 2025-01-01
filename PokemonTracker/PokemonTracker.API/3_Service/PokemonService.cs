@@ -23,7 +23,7 @@ public class PokemonService : IPokemonService
         var actualPkmn = pokeApi.GetAsync($"pokemon/{newPkmn.Species.ToLower()}").Result;
         Pokemon pokemonJSON = JsonConvert.DeserializeObject<Pokemon>(actualPkmn.Content.ReadAsStringAsync().Result)!;
 
-        if (actualPkmn is null || GetPkmnByName(newPkmn.Name).FirstOrDefault() is not null)
+        if (actualPkmn is null || GetPkmnByName(newPkmn.Name) is not null)
         {
             return null;
         }
@@ -42,12 +42,14 @@ public class PokemonService : IPokemonService
 
     public Pkmn? DeletePkmnByName(string name)
     {
-        var pkmn = GetPkmnByName(name).FirstOrDefault();
-        if (pkmn is not null)
+        var pkmn = GetPkmnByName(name);
+
+        if (pkmn is null)
         {
-            _pokemonRepository.DeletePkmnByName(name);
+            return null;
         }
-        return pkmn;
+        
+        return _pokemonRepository.DeletePkmnByName(pkmn);;
     }
 
     public IEnumerable<Pkmn> GetAllPkmn()
@@ -66,7 +68,7 @@ public class PokemonService : IPokemonService
         return _pokemonRepository.GetAllPkmnByType(type);
     }
 
-    public IEnumerable<Pkmn> GetPkmnByName(string name)
+    public Pkmn GetPkmnByName(string name)
     {
         return _pokemonRepository.GetPkmnByName(name);
     }
