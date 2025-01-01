@@ -48,7 +48,7 @@ public class PokemonRepository : IPokemonRepository
 
     public Pkmn GetPkmnByName(string name)
     {
-        var pkmn = _pokemonContext.Pkmns.Where(p => p.Name.Equals(name)).First();
+        var pkmn = _pokemonContext.Pkmns.Where(p => p.Name.Equals(name)).FirstOrDefault();
 
         return pkmn;
     }

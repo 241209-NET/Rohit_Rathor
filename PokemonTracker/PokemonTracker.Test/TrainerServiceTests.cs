@@ -94,7 +94,7 @@ public class TrainerServiceTests
             .Returns(newTrainer);
 
         // Act
-        var myTrainer = trainerService.DeleteTrainerByName(newTrainer);
+        var myTrainer = trainerService.DeleteTrainerByName(newTrainer.Name);
 
         // Assert
         Assert.DoesNotContain(myTrainer, trainerList);

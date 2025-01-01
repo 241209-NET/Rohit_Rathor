@@ -20,7 +20,7 @@ public class TrainerRepository : ITrainerRepository
 
     public Trainer? DeleteTrainerByName(Trainer trainer)
     {
-        _trainerContext.Remove(trainer);
+        _trainerContext.Trainers.Remove(trainer);
         _trainerContext.SaveChanges();
 
         return trainer;
